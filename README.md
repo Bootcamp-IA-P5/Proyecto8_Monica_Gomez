@@ -185,27 +185,6 @@ Este framework es útil para:
 
 ---
 
-## 👤 Autora
-
-**Mónica Gómez**  
-*Data Science Project | Machine Learning*
-
----
-
-## 📚 Referencias
-
-- [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/mushroom)
-- [Scikit-learn Documentation](https://scikit-learn.org/)
-- [PCA Explained](https://scikit-learn.org/stable/modules/decomposition.html#pca)
-
----
-
-## 📄 Licencia
-
-Este proyecto tiene fines educativos. Dataset bajo licencia UCI ML Repository.
-
----
-
 <div align="center">
 
 **⭐ Si este proyecto te resulta útil, considera darle una estrella ⭐**
