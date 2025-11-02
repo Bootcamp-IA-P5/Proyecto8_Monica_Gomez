@@ -1,92 +1,45 @@
 🧠 Proyecto 8 – Aprendizaje No Supervisado con PCA y Clustering
-📚 Descripción del Proyecto
+📚 Descripción
+Análisis práctico de aprendizaje automático no supervisado aplicado al dataset de hongos. El proyecto explora cómo identificar patrones y agrupaciones sin usar etiquetas, comparando los resultados con un modelo supervisado.
+Técnicas Implementadas
 
-Este repositorio contiene un taller práctico orientado al aprendizaje automático no supervisado, usando técnicas de:
+🧩 PCA — Reducción de dimensionalidad preservando máxima varianza
+🔷 K-Means — Agrupamiento automático por similitud
+🌳 Random Forest — Modelo supervisado para comparación
 
-🧩 PCA (Análisis de Componentes Principales) — para reducir la dimensionalidad de los datos.
 
-🔷 Clustering (K-Means) — para agrupar observaciones similares sin usar etiquetas.
+🍄 Dataset: Mushroom Classification
+Fuente: UCI Machine Learning Repository
 
-🌳 Comparativa con Random Forest (supervisado) — para contrastar resultados entre enfoques supervisados y no supervisados.
+📊 Registros: 8,124 hongos
+🔢 Variables: 23 atributos categóricos (color, forma, olor, textura, etc.)
+🎯 Clases: Comestible vs. Venenoso
 
-El objetivo principal es explorar cómo los algoritmos pueden encontrar patrones y agrupaciones dentro de un conjunto de datos sin conocer las etiquetas, y luego comparar estos resultados con un modelo supervisado tradicional.
+Desafío: ¿Puede un modelo no supervisado separar hongos comestibles de venenosos usando solo características físicas?
 
-🍄 Dataset Utilizado: Mushroom Dataset
+🎯 Objetivos
 
-El proyecto utiliza el Mushroom Dataset, un conjunto de datos muy conocido en el ámbito educativo que contiene información sobre diferentes tipos de hongos.
+Comprender la diferencia entre aprendizaje supervisado y no supervisado
+Aplicar técnicas de preprocesamiento de datos categóricos
+Implementar PCA para visualización y reducción dimensional
+Aplicar K-Means y determinar el número óptimo de clusters
+Comparar resultados con Random Forest
 
-Cada registro describe las características físicas de un hongo (color, forma, tamaño, olor, etc.) junto con su clasificación como comestible o venenoso.
 
-🔹 Fuente: UCI Machine Learning Repository
-🔹 Tamaño: 8124 registros y 23 variables categóricas
-🔹 Objetivo: entender cómo un modelo no supervisado puede separar las clases sin conocer la etiqueta “comestible/venenoso”.
+📂 Estructura del Notebook
+Proyecto8_Monica_Gomez.ipynb
 
-🎯 Objetivos de Aprendizaje
+Fundamentos Teóricos - Conceptos de PCA y K-Means
+Exploración de Datos - Carga y análisis del dataset
+Preprocesamiento - Encoding y normalización de variables
+PCA - Reducción dimensional y análisis de varianza explicada
+K-Means - Clustering con método del codo y visualización
+Random Forest - Modelo supervisado y comparación de métricas
+Conclusiones - Interpretación y análisis comparativo
 
-Comprender la diferencia entre aprendizaje supervisado y no supervisado.
-
-Aplicar técnicas de preprocesamiento de datos: normalización, escalado y codificación.
-
-Implementar PCA para reducir la dimensionalidad y facilitar la visualización.
-
-Realizar agrupamiento (K-Means) y analizar la distribución de los grupos.
-
-Comparar los resultados del modelo no supervisado con un modelo supervisado (Random Forest).
-
-Interpretar los resultados y visualizar las agrupaciones obtenidas.
-
-🧩 Contenido del Notebook
-
-El archivo Proyecto8_Monica_Gomez.ipynb está estructurado en las siguientes secciones:
-
-1️⃣ Introducción Teórica
-
-Breve explicación de los conceptos de aprendizaje supervisado vs. no supervisado y los fundamentos de PCA y K-Means.
-
-2️⃣ Carga y Exploración de Datos
-
-Carga del Mushroom Dataset.
-
-Exploración de sus variables y valores únicos.
-
-Limpieza y codificación de variables categóricas.
-
-3️⃣ Preprocesamiento
-
-Label Encoding / One Hot Encoding para variables categóricas.
-
-Estandarización para normalizar los datos antes de aplicar PCA o K-Means.
-
-4️⃣ Reducción de Dimensionalidad (PCA)
-
-Aplicación de PCA para reducir la cantidad de variables.
-
-Visualización de los componentes principales.
-
-Análisis de la varianza explicada por cada componente.
-
-5️⃣ Agrupamiento (K-Means)
-
-Implementación de K-Means con distintos valores de k.
-
-Evaluación del número óptimo de grupos mediante el método del “codo”.
-
-Visualización de los clusters obtenidos con los componentes principales.
-
-6️⃣ Comparativa con Modelo Supervisado (Random Forest)
-
-Entrenamiento de un modelo Random Forest usando las etiquetas verdaderas.
-
-Comparación de métricas con los resultados del modelo no supervisado.
-
-Reflexión sobre las ventajas y desventajas de ambos enfoques.
-
-7️⃣ Conclusiones
-
-Análisis final de los resultados obtenidos, interpretación de los grupos y discusión sobre las diferencias entre los modelos supervisados y no supervisados.
 
 💻 Librerías Utilizadas
-import pandas as pd
+pythonimport pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -95,44 +48,41 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.cluster import KMeans
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, confusion_matrix
+from sklearn.metrics import accuracy_score, confusion_matrix, silhouette_score
 
-⚙️ Cómo Ejecutar el Proyecto
+⚙️ Cómo Ejecutar
+bash# Instalar dependencias
+pip install pandas numpy matplotlib seaborn scikit-learn jupyter
 
-Clona o descarga este repositorio.
+# Clonar repositorio
+git clone [URL_DEL_REPOSITORIO]
 
-Abre el archivo Proyecto8_Monica_Gomez.ipynb en Jupyter Notebook, JupyterLab o Google Colab.
+# Abrir notebook
+jupyter notebook Proyecto8_Monica_Gomez.ipynb
+Ejecuta cada celda secuencialmente para reproducir el análisis completo.
 
-Ejecuta cada celda en orden para reproducir los resultados.
-
-Observa cómo los datos se transforman, se agrupan y se comparan los modelos paso a paso.
-
-🧠 Conceptos Clave
-Concepto	Explicación Simple
-Aprendizaje No Supervisado	El modelo aprende sin etiquetas, buscando patrones o agrupaciones.
-PCA (Análisis de Componentes Principales)	Reduce la cantidad de variables manteniendo la información más importante.
-K-Means	Agrupa los datos según su similitud en k grupos distintos.
-Random Forest	Modelo supervisado que utiliza muchos árboles de decisión para clasificar datos.
-Escalado	Ajusta los valores numéricos para que tengan una escala similar.
-Label/One Hot Encoder	Transforma texto en números para que el modelo pueda procesarlo.
 📊 Resultados Esperados
+✅ Reducción de 23 variables a 2-3 componentes (>85% varianza explicada)
+✅ Identificación de 2 clusters principales sin supervisión
+✅ Alta correspondencia entre clusters y clases reales (~90%)
+✅ Visualizaciones 2D/3D interpretables de las agrupaciones
+✅ Comparación cuantitativa: K-Means vs Random Forest
 
-Reducción efectiva de la dimensionalidad mediante PCA.
+📈 Conclusiones
+El proyecto demuestra que PCA + K-Means puede identificar estructuras naturales en los datos sin etiquetas previas. La comparación con Random Forest revela:
 
-Agrupamiento visible de hongos comestibles y venenosos sin usar etiquetas.
+Supervisado: Mayor precisión predictiva, requiere datos etiquetados
+No Supervisado: Descubre patrones intrínsecos, útil para exploración
 
-Comparación clara entre resultados de K-Means y Random Forest.
+Este enfoque es aplicable a segmentación de clientes, análisis médico exploratorio, detección de anomalías y clasificación de datos sin etiquetar.
 
-Comprensión visual de los grupos en los gráficos 2D y 3D de PCA.
+👤 Autora
+Mónica Gómez
 
-📝 Conclusiones
+📚 Referencias
 
-El proyecto demuestra cómo los algoritmos de aprendizaje no supervisado (PCA + K-Means) pueden identificar estructuras ocultas dentro de los datos sin conocer las etiquetas.
+UCI Machine Learning Repository - Mushroom Dataset
+Scikit-learn Documentation
 
-Al comparar estos resultados con Random Forest, se observa cómo ambos enfoques ofrecen perspectivas distintas sobre el mismo conjunto de datos:
 
-El modelo supervisado busca la mejor predicción.
-
-El modelo no supervisado busca los patrones naturales que existen en los datos.
-
-Este taller es una excelente forma de comprender cómo funciona el aprendizaje automático desde dos enfoques complementarios.
+⭐ Si este proyecto te resulta útil, considera darle una estrella
